@@ -1,0 +1,24 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes import router
+from app.config.settings import settings
+
+app = FastAPI(
+    title="Text-to-SQL Agent API",
+    description="Natural language to SQL over a user-connected database",
+    version="0.3.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origins_list,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.include_router(router, prefix="/api")
+
+
+@app.get("/")
+async def root():
+    return {"message": "Text-to-SQL Agent API is running", "docs": "/docs"}
