@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap");
+
+:root {
+  --ink: #132019;
+  --ink-soft: #2a4034;
+  --paper: #f3f6f1;
+  --panel: #ffffffee;
+  --line: #c5d4c8;
+  --moss: #1f6b4a;
+  --moss-deep: #0f3d2c;
+  --citrus: #e07a2f;
+  --mist: #dce8df;
+  --chat-bg: #e8f0ea;
+}
+
+html, body, [class*="css"] {
+  font-family: "Figtree", sans-serif;
+}
+
+.stApp {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #d9ebe0 0%, transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, #f5e6d4 0%, transparent 50%),
+    linear-gradient(165deg, #eef4ef 0%, #f7f4ee 45%, #e7efe9 100%);
+  color: var(--ink);
+}
+
+.stAppDeployButton,
+#MainMenu,
+footer {
+  display: none !important;
+}
+
+.stMainBlockContainer {
+  padding: 1.25rem 1.5rem 2rem !important;
+  max-width: 1400px;
+}
+
+/* Brand header */
+.ttsql-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.ttsql-brand {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--moss-deep);
+  margin: 0;
+}
+
+.ttsql-tag {
+  margin: 0.35rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  max-width: 36rem;
+}
+
+.ttsql-status {
+  font-family: "Syne", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--moss-deep);
+  white-space: nowrap;
+}
+
+.ttsql-status.is-live {
+  border-color: var(--moss);
+  background: #e4f3ea;
+  color: var(--moss);
+}
+
+.ttsql-status.is-idle {
+  border-color: #d8c4b0;
+  background: #fff6ec;
+  color: var(--citrus);
+}
+
+/* Panels */
+.ttsql-panel-label {
+  font-family: "Syne", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin: 0 0 0.65rem;
+}
+
+.ttsql-empty {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 2rem;
+  border: 1px dashed var(--line);
+  background:
+    linear-gradient(135deg, #f8fbf8 0%, #eef5f0 100%);
+  border-radius: 2px;
+}
+
+.ttsql-empty h2 {
+  font-family: "Syne", sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--moss-deep);
+  letter-spacing: -0.02em;
+}
+
+.ttsql-empty p {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 28rem;
+  line-height: 1.5;
+}
+
+.ttsql-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.ttsql-chip {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.65rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  border-radius: 999px;
+}
+
+/* Chat area */
+div[data-testid="stChatMessage"] {
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 2px !important;
+  padding: 0.85rem 1rem !important;
+  margin-bottom: 0.65rem !important;
+  box-shadow: none !important;
+}
+
+div[data-testid="stChatMessage"] p {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* Inputs / buttons */
+.stTextInput input, .stSelectbox [data-baseweb="select"] > div {
+  border-radius: 2px !important;
+  border-color: var(--line) !important;
+  background: #fff !important;
+}
+
+.stButton > button {
+  border-radius: 2px !important;
+  border: 1px solid var(--moss-deep) !important;
+  background: var(--moss-deep) !important;
+  color: #f4faf6 !important;
+  font-family: "Syne", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.stButton > button:hover {
+  background: var(--moss) !important;
+  border-color: var(--moss) !important;
+  color: #fff !important;
+}
+
+div[data-testid="stChatInput"] {
+  border: 1px solid var(--line) !important;
+  background: #fff !important;
+  border-radius: 2px !important;
+}
+
+div[data-testid="stChatInput"] textarea {
+  font-family: "Figtree", sans-serif !important;
+}
+
+/* Dataframe */
+div[data-testid="stDataFrame"] {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Columns breathing room */
+.stHorizontalBlock {
+  gap: 1.25rem !important;
+}
+
+[data-testid="stSidebar"] {
+  display: none;
+}
