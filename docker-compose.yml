@@ -1,0 +1,52 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  # Sample HR database for local testing (see README)
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: hr_demo
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./backend/db/hr_db.sql:/docker-entrypoint-initdb.d/01_hr_db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demo -d hr_demo"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      # Mount GCP credentials if path in .env points here
+      - ./backend/app/config:/app/app/config:ro
+    depends_on:
+      - redis
+      postgres:
+        condition: service_healthy
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CORS_ORIGINS: http://localhost:8501
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    env_file:
+      - ./frontend/.env
+    environment:
+      # Browser calls the API on the host, not the Docker network name
+      BACKEND_API_URL: http://localhost:8000
+    depends_on:
+      - backend
