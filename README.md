@@ -372,7 +372,8 @@ Response:
 
 - Database credentials are entered in the UI and stored in Redis for the session — treat this as a **trusted environment / demo** tool, not a public multi-tenant SaaS.
 - The agent prompt discourages destructive SQL, but the toolkit can still execute whatever SQL the model produces. Prefer a **read-only DB user** in production-like setups.
-- Do not commit `backend/app/config/key.json` or real `.env` files.
+- **Never commit secrets:** keep `backend/.env`, `frontend/.env`, and `backend/app/config/key.json` local only (gitignored). Only `*.env.example` files belong in git, with placeholders like `your-gcp-project-id`.
+- Compose sample login `demo` / `demo` is a **local throwaway** Postgres user for the bundled HR seed — not a cloud API key. Change it if you expose the port beyond your machine.
 
 ## License
 
