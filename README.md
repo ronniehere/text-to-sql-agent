@@ -12,6 +12,12 @@ Ask a relational database questions in plain language. The agent inspects schema
 
 Built for **demos, internal tools, and prototyping** where analysts or operators need quick answers from PostgreSQL (or other SQLAlchemy-supported databases) without living in a SQL console.
 
+<p align="center">
+  <img src="docs/assets/demo.gif" alt="Text-to-SQL Agent demo: connect a database, browse tables, ask a question, get an answer" width="900" />
+</p>
+
+**Demo flow:** connect sample Postgres → browse `employees` → ask in plain English → agent grounds on schema, writes SQL, critiques, executes, answers.
+
 ## Problem
 
 Most business data already lives in SQL databases, but asking for it usually means:
